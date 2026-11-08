@@ -6,3 +6,5 @@ media/
 work/
 output/narracao_neural/
 output/scenes_narradas_neural/
+output/narracao_google/
+output/scenes_google/

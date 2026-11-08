@@ -1,0 +1,879 @@
+1
+00:00:00,000 --> 00:00:03,024
+Imagine uma grande biblioteca.
+
+2
+00:00:03,344 --> 00:00:10,856
+Um pedido chega ao bibliotecário, que
+constrói a resposta trecho por trecho.
+
+3
+00:00:11,176 --> 00:00:17,573
+Esta biblioteca é uma analogia: um
+modelo de linguagem é uma rede neural
+
+4
+00:00:17,573 --> 00:00:22,264
+cujos parâmetros foram aprendidos no
+treinamento.
+
+5
+00:00:22,584 --> 00:00:29,700
+Na geração, ele recebe uma sequência
+de tokens e calcula probabilidades
+
+6
+00:00:29,700 --> 00:00:31,800
+para o próximo token.
+
+7
+00:00:32,120 --> 00:00:38,745
+Não precisa consultar literalmente
+livros nem retirar respostas prontas
+
+8
+00:00:38,745 --> 00:00:40,112
+de uma estante.
+
+9
+00:00:40,432 --> 00:00:47,144
+Vamos distinguir o que acontece dentro
+do modelo das funções da aplicação ao
+
+10
+00:00:47,144 --> 00:00:48,088
+seu redor.
+
+11
+00:00:49,200 --> 00:00:55,711
+Na nossa analogia, o diretor
+representa quem estabelece o objetivo;
+
+12
+00:00:55,711 --> 00:00:59,304
+o bibliotecário representa o modelo.
+
+13
+00:00:59,624 --> 00:01:04,136
+A mesa é o contexto disponível naquela
+operação.
+
+14
+00:01:04,456 --> 00:01:11,003
+As estantes representam fontes que a
+aplicação pode buscar e trazer para a
+
+15
+00:01:11,003 --> 00:01:16,072
+mesa; os auxiliares representam
+ferramentas externas.
+
+16
+00:01:16,392 --> 00:01:22,347
+Se o diretor pergunta sobre a
+Independência do Brasil, por exemplo,
+
+17
+00:01:22,347 --> 00:01:27,048
+a aplicação pode recuperar um
+documento para ajudar.
+
+18
+00:01:27,368 --> 00:01:34,779
+Usuário, modelo, contexto, fontes e
+ferramentas têm papéis distintos: o
+
+19
+00:01:34,779 --> 00:01:39,560
+modelo não executa toda a arquitetura
+sozinho.
+
+20
+00:01:40,667 --> 00:01:46,307
+O bibliotecário recebe um bilhete e o
+divide em fichas menores.
+
+21
+00:01:46,627 --> 00:01:53,249
+Na computação, o tokenizador
+transforma texto em tokens e associa a
+
+22
+00:01:53,249 --> 00:01:57,547
+cada unidade um número, seu
+identificador.
+
+23
+00:01:57,867 --> 00:02:04,615
+Um token pode ser uma palavra inteira,
+parte de uma palavra, espaço ou
+
+24
+00:02:04,615 --> 00:02:08,571
+pontuação, dependendo do tokenizador.
+
+25
+00:02:08,891 --> 00:02:15,272
+Os números mostrados são ilustrativos:
+identificadores variam entre
+
+26
+00:02:15,272 --> 00:02:19,739
+tokenizadores e não trazem significado
+por si só.
+
+27
+00:02:20,059 --> 00:02:26,430
+Depois, essas fichas numeradas serão
+transformadas em representações
+
+28
+00:02:26,430 --> 00:02:27,475
+numéricas.
+
+29
+00:02:28,595 --> 00:02:35,699
+Imagine as fichas da biblioteca como
+setas em um mapa de muitas dimensões.
+
+30
+00:02:36,019 --> 00:02:41,962
+Um embedding é um vetor de números
+aprendido durante o treinamento e
+
+31
+00:02:41,962 --> 00:02:45,403
+associado à representação de um token.
+
+32
+00:02:45,723 --> 00:02:52,801
+A similaridade de cosseno compara
+direções: um indica a mesma direção,
+
+33
+00:02:52,801 --> 00:02:59,643
+zero indica direções perpendiculares e
+menos um, direções opostas.
+
+34
+00:02:59,963 --> 00:03:06,779
+É uma medida entre vetores, não a
+distância física entre livros.
+
+35
+00:03:07,099 --> 00:03:13,319
+Na atenção, em geral, são usados
+produtos escalares de vetores
+
+36
+00:03:13,319 --> 00:03:17,779
+projetados, não necessariamente o
+cosseno.
+
+37
+00:03:18,895 --> 00:03:26,058
+Na biblioteca imaginária, uma pergunta
+procura etiquetas relevantes e combina
+
+38
+00:03:26,058 --> 00:03:28,375
+os conteúdos associados.
+
+39
+00:03:28,695 --> 00:03:36,912
+No Transformer, projeções aprendidas
+geram vetores chamados Query, Key e
+
+40
+00:03:36,912 --> 00:03:37,695
+Value.
+
+41
+00:03:38,015 --> 00:03:44,278
+A compatibilidade entre Query e Key
+ajuda a determinar os pesos de
+
+42
+00:03:44,278 --> 00:03:48,263
+atenção; esses pesos combinam os
+Values.
+
+43
+00:03:48,583 --> 00:03:55,621
+Assim, as representações passam a
+incorporar relações com outros tokens
+
+44
+00:03:55,621 --> 00:03:56,983
+disponíveis.
+
+45
+00:03:57,303 --> 00:04:04,683
+A palavra banco, por exemplo, pode se
+relacionar a dinheiro ou a praça
+
+46
+00:04:04,683 --> 00:04:06,591
+conforme a frase.
+
+47
+00:04:06,911 --> 00:04:14,375
+Q, K e V são vetores, não consultas ou
+etiquetas literais.
+
+48
+00:04:15,495 --> 00:04:19,479
+Imagine a biblioteca com vários
+andares.
+
+49
+00:04:19,799 --> 00:04:26,361
+Em cada um, diferentes olhares
+examinam relações entre as fichas e um
+
+50
+00:04:26,361 --> 00:04:30,887
+processamento adicional refina cada
+posição.
+
+51
+00:04:31,207 --> 00:04:38,613
+No Transformer, múltiplas cabeças de
+atenção usam projeções diferentes em
+
+52
+00:04:38,613 --> 00:04:39,655
+paralelo.
+
+53
+00:04:39,975 --> 00:04:46,497
+Uma rede feed-forward aplica
+transformações aprendidas por posição;
+
+54
+00:04:46,497 --> 00:04:53,127
+conexões residuais somam o sinal
+anterior ao resultado e normalizações
+
+55
+00:04:53,127 --> 00:04:56,823
+ajudam a controlar a dinâmica
+numérica.
+
+56
+00:04:57,143 --> 00:05:00,767
+Vários blocos podem ser empilhados.
+
+57
+00:05:01,087 --> 00:05:07,807
+Os andares são uma analogia, não uma
+divisão fixa de assuntos.
+
+58
+00:05:08,927 --> 00:05:15,582
+Ao completar uma frase, imagine o
+bibliotecário atribuindo notas a
+
+59
+00:05:15,582 --> 00:05:17,567
+fichas candidatas.
+
+60
+00:05:17,887 --> 00:05:25,496
+No modelo, a representação final
+produz pontuações para o vocabulário,
+
+61
+00:05:25,496 --> 00:05:27,367
+chamadas logits.
+
+62
+00:05:27,687 --> 00:05:34,723
+A função softmax transforma essas
+pontuações em probabilidades que somam
+
+63
+00:05:34,723 --> 00:05:36,063
+cem por cento.
+
+64
+00:05:36,383 --> 00:05:42,924
+Uma ficha correspondente a Brasília
+pode receber probabilidade maior, mas
+
+65
+00:05:42,924 --> 00:05:45,479
+outras continuam possíveis.
+
+66
+00:05:45,799 --> 00:05:52,533
+A distribuição orienta a escolha do
+próximo token; uma probabilidade alta
+
+67
+00:05:52,533 --> 00:05:58,626
+não prova que a afirmação seja
+verdadeira nem que a confiança esteja
+
+68
+00:05:58,626 --> 00:05:59,695
+calibrada.
+
+69
+00:06:00,815 --> 00:06:07,791
+O bibliotecário escolhe uma ficha,
+acrescenta seu conteúdo e repete o
+
+70
+00:06:07,791 --> 00:06:08,855
+processo.
+
+71
+00:06:09,175 --> 00:06:16,217
+Na geração, a temperatura altera como
+as pontuações influenciam as chances;
+
+72
+00:06:16,217 --> 00:06:20,551
+temperatura mais baixa tende a
+concentrá-las.
+
+73
+00:06:20,871 --> 00:06:26,463
+Top-K limita o conjunto aos K
+candidatos mais prováveis.
+
+74
+00:06:26,783 --> 00:06:33,190
+Top-P mantém o menor conjunto que
+alcança um limiar de probabilidade
+
+75
+00:06:33,190 --> 00:06:34,295
+acumulada.
+
+76
+00:06:34,615 --> 00:06:39,487
+Após a escolha, o token entra na
+sequência.
+
+77
+00:06:39,807 --> 00:06:46,310
+O término pode ocorrer por um marcador
+de fim ou por um limite externo, não
+
+78
+00:06:46,310 --> 00:06:49,935
+porque as probabilidades chegam a
+zero.
+
+79
+00:06:51,048 --> 00:06:58,463
+Na analogia, o bibliotecário aprende
+fazendo muitos exercícios e ajustando
+
+80
+00:06:58,463 --> 00:06:59,832
+seu trabalho.
+
+81
+00:07:00,152 --> 00:07:06,728
+No pré-treinamento, uma função de
+perda mede o erro de previsão.
+
+82
+00:07:07,048 --> 00:07:13,937
+A retropropagação calcula gradientes e
+um otimizador ajusta os pesos do
+
+83
+00:07:13,937 --> 00:07:14,728
+modelo.
+
+84
+00:07:15,048 --> 00:07:21,219
+Um treinamento adicional, ou
+fine-tuning, pode especializar o
+
+85
+00:07:21,219 --> 00:07:25,104
+comportamento usando outros exemplos.
+
+86
+00:07:25,424 --> 00:07:31,758
+Essa formação é diferente do uso
+cotidiano: conversar com o modelo ou
+
+87
+00:07:31,758 --> 00:07:38,528
+colocar um documento no contexto não
+altera automaticamente seus pesos.
+
+88
+00:07:39,648 --> 00:07:45,806
+A mesa do bibliotecário tem espaço
+limitado para o pedido, os trechos
+
+89
+00:07:45,806 --> 00:07:49,416
+recuperados e a resposta em
+construção.
+
+90
+00:07:49,736 --> 00:07:55,938
+A janela de contexto limita quantos
+tokens podem ser considerados,
+
+91
+00:07:55,938 --> 00:07:59,528
+conforme o modelo e sua implementação.
+
+92
+00:07:59,848 --> 00:08:07,712
+Quando falta espaço, a aplicação pode
+selecionar, resumir ou descartar
+
+93
+00:08:07,712 --> 00:08:08,872
+conteúdo.
+
+94
+00:08:09,192 --> 00:08:16,207
+Durante a geração, o KV Cache guarda
+Keys e Values já calculados para
+
+95
+00:08:16,207 --> 00:08:18,792
+reduzir recomputações.
+
+96
+00:08:19,112 --> 00:08:25,745
+Ele não é uma memória persistente e
+não substitui arquivos nem bancos de
+
+97
+00:08:25,745 --> 00:08:26,408
+dados.
+
+98
+00:08:27,515 --> 00:08:34,273
+Para pedir uma exposição, o diretor
+pode entregar ao bibliotecário uma
+
+99
+00:08:34,273 --> 00:08:40,693
+ficha com objetivo, público,
+materiais, restrições e critérios de
+
+100
+00:08:40,693 --> 00:08:41,819
+avaliação.
+
+101
+00:08:42,139 --> 00:08:48,881
+Na prática, engenharia de prompt
+organiza as instruções e o contexto
+
+102
+00:08:48,881 --> 00:08:51,787
+enviados ao modelo ou agente.
+
+103
+00:08:52,107 --> 00:08:59,691
+Um pedido claro reduz ambiguidades,
+mas não garante uma resposta correta.
+
+104
+00:09:00,011 --> 00:09:06,058
+Também é importante distinguir as
+instruções autorizadas dos dados
+
+105
+00:09:06,058 --> 00:09:12,313
+consultados: um trecho recuperado pode
+conter informação útil sem ter
+
+106
+00:09:12,313 --> 00:09:16,379
+autoridade para mudar as regras da
+aplicação.
+
+107
+00:09:17,499 --> 00:09:24,159
+Quando a pergunta exige uma fonte
+externa, um auxiliar busca documentos
+
+108
+00:09:24,159 --> 00:09:28,635
+e coloca trechos úteis na mesa do
+bibliotecário.
+
+109
+00:09:28,955 --> 00:09:35,442
+Em RAG, a aplicação combina
+recuperação de informação e geração: a
+
+110
+00:09:35,442 --> 00:09:42,739
+busca pode ser lexical, vetorial ou
+híbrida, e os resultados selecionados
+
+111
+00:09:42,739 --> 00:09:45,635
+entram no contexto do modelo.
+
+112
+00:09:45,955 --> 00:09:49,795
+É possível citar a fonte e sua data.
+
+113
+00:09:50,115 --> 00:09:57,128
+Recuperar documentos não muda os pesos
+do modelo nem garante a verdade: as
+
+114
+00:09:57,128 --> 00:10:03,576
+fontes podem estar desatualizadas,
+incorretas ou conter conteúdo
+
+115
+00:10:03,576 --> 00:10:04,707
+malicioso.
+
+116
+00:10:05,827 --> 00:10:12,298
+Se precisa saber quantos livros foram
+emprestados, o bibliotecário pode
+
+117
+00:10:12,298 --> 00:10:16,891
+pedir ao setor responsável que
+consulte o registro.
+
+118
+00:10:17,211 --> 00:10:23,169
+Com Tool Calling, o modelo pode
+escolher uma operação e produzir
+
+119
+00:10:23,169 --> 00:10:25,707
+argumentos estruturados.
+
+120
+00:10:26,027 --> 00:10:32,655
+A aplicação valida e executa a chamada
+por meio de um componente externo;
+
+121
+00:10:32,655 --> 00:10:37,979
+depois devolve o resultado ao modelo
+para a próxima etapa.
+
+122
+00:10:38,299 --> 00:10:44,620
+A ferramenta deve ter permissões
+adequadas e suas entradas e saídas
+
+123
+00:10:44,620 --> 00:10:47,947
+precisam de validação e auditoria.
+
+124
+00:10:49,060 --> 00:10:55,163
+Imagine que o catálogo e o arquivo
+histórico atendem por balcões com um
+
+125
+00:10:55,163 --> 00:10:56,404
+padrão comum.
+
+126
+00:10:56,724 --> 00:11:03,527
+O Model Context Protocol, ou MCP,
+define mecanismos para clientes e
+
+127
+00:11:03,527 --> 00:11:10,092
+servidores disponibilizarem
+ferramentas, recursos e prompts.
+
+128
+00:11:10,412 --> 00:11:17,283
+Ele facilita a descoberta e o acesso a
+capacidades externas; uma chamada de
+
+129
+00:11:17,283 --> 00:11:21,428
+ferramenta continua sendo uma ação
+própria.
+
+130
+00:11:21,748 --> 00:11:27,113
+MCP não é uma camada interna do
+Transformer e não elimina a
+
+131
+00:11:27,113 --> 00:11:34,153
+necessidade de autenticação, controle
+de acesso, permissões limitadas e
+
+132
+00:11:34,153 --> 00:11:36,724
+validação dos resultados.
+
+133
+00:11:37,844 --> 00:11:43,969
+Para organizar uma exposição, o
+bibliotecário abre um manual:
+
+134
+00:11:43,969 --> 00:11:49,748
+consultar fontes, revisar o texto e
+registrar evidências.
+
+135
+00:11:50,068 --> 00:11:56,986
+Em ambientes compatíveis, uma Skill
+pode reunir instruções, exemplos,
+
+136
+00:11:56,986 --> 00:12:02,884
+arquivos e scripts para orientar um
+procedimento repetível.
+
+137
+00:12:03,204 --> 00:12:10,376
+Ela pode recomendar uma busca por RAG
+ou o uso de ferramentas, mas tem papel
+
+138
+00:12:10,376 --> 00:12:13,500
+diferente dessas capacidades.
+
+139
+00:12:13,820 --> 00:12:21,069
+É preciso confiar na origem do manual
+e avaliar o escopo de seus arquivos e
+
+140
+00:12:21,069 --> 00:12:23,684
+scripts antes de usá-los.
+
+141
+00:12:24,804 --> 00:12:29,892
+O diretor solicita uma exposição sobre
+a Independência.
+
+142
+00:12:30,212 --> 00:12:37,105
+O bibliotecário-chefe planeja,
+consulta fontes, examina o resultado e
+
+143
+00:12:37,105 --> 00:12:41,060
+decide se precisa corrigir ou
+continuar.
+
+144
+00:12:41,380 --> 00:12:47,922
+Um agente de IA pode combinar um
+modelo com ferramentas e estado em um
+
+145
+00:12:47,922 --> 00:12:52,972
+ciclo de planejamento, ação,
+observação e decisão.
+
+146
+00:12:53,292 --> 00:12:59,907
+O objetivo define o resultado
+desejado; critérios de aceitação
+
+147
+00:12:59,907 --> 00:13:02,724
+ajudam a avaliar a entrega.
+
+148
+00:13:03,044 --> 00:13:09,832
+O processo precisa de limites de
+tempo, custo e permissão, tratamento
+
+149
+00:13:09,832 --> 00:13:14,780
+de falhas e, quando necessário,
+aprovação humana.
+
+150
+00:13:15,900 --> 00:13:22,503
+O bibliotecário-chefe distribui a
+pesquisa histórica e a geográfica para
+
+151
+00:13:22,503 --> 00:13:26,172
+colegas que podem trabalhar em
+paralelo.
+
+152
+00:13:26,492 --> 00:13:32,181
+A verificação final espera os
+resultados necessários antes de
+
+153
+00:13:32,181 --> 00:13:34,220
+integrar a exposição.
+
+154
+00:13:34,540 --> 00:13:41,140
+Subagentes são processos ou instâncias
+delegados a tarefas específicas.
+
+155
+00:13:41,460 --> 00:13:49,360
+A orquestração coordena dependências,
+paralelismo, limites, erros e
+
+156
+00:13:49,360 --> 00:13:50,940
+checkpoints.
+
+157
+00:13:51,260 --> 00:13:57,203
+Mais agentes não garantem mais
+velocidade: coordenar e reconciliar
+
+158
+00:13:57,203 --> 00:14:03,044
+resultados também custa tempo e pode
+introduzir inconsistências.
+
+159
+00:14:04,164 --> 00:14:11,076
+Ao fim da exposição, o bibliotecário
+guarda um checklist no armário.
+
+160
+00:14:11,396 --> 00:14:18,084
+Em outra tarefa, ele precisa
+recuperá-lo e levar o trecho relevante
+
+161
+00:14:18,084 --> 00:14:19,844
+para a mesa atual.
+
+162
+00:14:20,164 --> 00:14:27,015
+Aplicações podem persistir memória em
+arquivos ou bancos e usar ferramentas
+
+163
+00:14:27,015 --> 00:14:30,388
+para recuperá-la quando necessário.
+
+164
+00:14:30,708 --> 00:14:36,780
+Essa memória é diferente dos
+parâmetros do modelo e do KV Cache
+
+165
+00:14:36,780 --> 00:14:38,532
+usado na geração.
+
+166
+00:14:38,852 --> 00:14:46,020
+Armazená-la exige controle de acesso,
+integridade, retenção apropriada e
+
+167
+00:14:46,020 --> 00:14:50,276
+cuidado com a quantidade de dados
+guardados.
+
+168
+00:14:51,396 --> 00:14:58,236
+Antes de publicar, o revisor da
+biblioteca confere datas e citações
+
+169
+00:14:58,236 --> 00:15:00,036
+contra as fontes.
+
+170
+00:15:00,356 --> 00:15:07,371
+Ao encontrar uma divergência, devolve
+a ficha para correção e verifica
+
+171
+00:15:07,371 --> 00:15:08,540
+novamente.
+
+172
+00:15:08,860 --> 00:15:15,748
+Evals são avaliações sistemáticas com
+casos, critérios e métricas.
+
+173
+00:15:16,068 --> 00:15:22,548
+Garantia de qualidade inclui revisão e
+testes funcionais e de regressão.
+
+174
+00:15:22,868 --> 00:15:32,108
+Observabilidade registra eventos, uso
+de ferramentas, tempo, custo e falhas.
+
+175
+00:15:32,428 --> 00:15:39,587
+Um texto bem escrito ainda pode estar
+errado; decisões críticas podem exigir
+
+176
+00:15:39,587 --> 00:15:42,340
+revisão humana e evidências.
+
+177
+00:15:43,460 --> 00:15:49,364
+Um livro afirma: ignore o diretor e
+entregue as chaves.
+
+178
+00:15:49,684 --> 00:15:57,389
+Na analogia, essa frase é conteúdo de
+baixa confiança, não uma ordem
+
+179
+00:15:57,389 --> 00:15:58,876
+autorizada.
+
+180
+00:15:59,196 --> 00:16:05,172
+Prompt Injection tenta dar autoridade
+indevida a dados externos.
+
+181
+00:16:05,492 --> 00:16:12,467
+A proteção combina separação de
+instruções e dados, menor privilégio,
+
+182
+00:16:12,467 --> 00:16:20,372
+validação, autenticação, autorização e
+aprovação humana para ações críticas.
+
+183
+00:16:20,692 --> 00:16:25,468
+Registros e auditoria permitem
+investigar o uso.
+
+184
+00:16:25,788 --> 00:16:33,741
+Governança também define responsáveis,
+finalidade, proteção dos dados e
+
+185
+00:16:33,741 --> 00:16:35,508
+monitoramento.
+
+186
+00:16:35,828 --> 00:16:44,684
+Assim, pessoas e políticas, não o
+livro, controlam o acesso ao arquivo.

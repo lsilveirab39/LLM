@@ -29,3 +29,14 @@ python scripts/montar_video_piper.py
 ```
 
 O primeiro comando gera WAVs e `output/legendas/pt-BR-neural.srt`; o segundo cria cópias narradas e o filme. A fala é sintetizada por frases, e a distribuição das legendas dentro de cada frase é aproximada. A voz continua sintética e deve ser avaliada por escuta humana; a sincronia com os movimentos também requer revisão. Os modelos e WAVs intermediários não são necessários para reproduzir o MP4 já gerado.
+
+## Voz do Google, ritmo e glossário em tela
+
+A versão `output/IA_Biblioteca_Voz_Google_Glossario.mp4` usa Google Translate TTS via `gTTS==2.5.4` com `lang=pt` e `tld=com.br`. É um serviço externo não oficial: o texto do roteiro é enviado ao Google, sua disponibilidade pode mudar e não há chave de API paga. Verifique os termos aplicáveis antes de redistribuir a voz. As falas são sintetizadas em frases completas; as animações são retimadas e cada cena termina cerca de 1,1 segundo após a fala. O glossário está em `output/glossario/termos_analogias.json` e o roteiro utilizado em `output/narracao/roteiros_google.json`. Para reproduzir, instale gTTS e FFmpeg com filtros libass e libx264 e execute:
+
+```bash
+python scripts/gerar_voz_google.py
+python scripts/montar_video_google.py
+```
+
+`output/legendas/pt-BR-google.srt` é calculado por frase; dentro de cada frase os tempos são proporcionais ao texto e não são alinhamento fonético. O áudio e os vídeos de cenas intermediários são mantidos localmente e ignorados pelo Git. A sincronia fina das legendas e a pronúncia dos termos técnicos exigem revisão por escuta humana.

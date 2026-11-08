@@ -56,3 +56,9 @@ Portanto os vídeos constituem uma **versão de trabalho**, não uma entrega apr
 ## Alternativa de narração neural
 
 Foi criada uma segunda versão do filme usando Piper 1.8.0 e voz pt_BR-faber-medium, sem API paga. A voz é sintetizada por frases inteiras, com ritmo e pausas moderados. O `ffprobe` confirmou H.264 1920×1080 a 30 fps, áudio AAC e duração de 961,815 s. Os 20 áudios couberam nas cenas originais; as 186 legendas têm tempos válidos e ordenados. A marcação dentro de cada frase é proporcional, não alinhamento fonético; pronúncia, naturalidade, sincronismo com imagens e qualidade para ouvintes precisam de revisão auditiva humana. A versão anterior foi preservada.
+
+## Voz Google e glossário técnico
+
+Uma nova versão usa voz pt-BR fornecida pelo Google Translate via gTTS, que envia o texto do roteiro a um serviço externo. Cada cena foi ajustada à duração de sua narração e contém uma faixa que relaciona termos técnicos a elementos da biblioteca; o glossário completo também está em `output/glossario/`. A narração da cena 07 foi corrigida para citar Brasília, de acordo com a imagem.
+
+A validação com ffprobe confirmou 20 cenas H.264, 1920×1080, 30 fps e áudio AAC; as pausas calculadas entre o fim da última frase e o fim de cada cena ficaram entre 1,107 e 1,120 segundo. O filme tem 1.005,835 segundos e áudio AAC; as 186 legendas têm tempos ordenados. Foram inspecionados quadros centrais das 20 cenas e amostras adicionais das cenas 01, 05 e 20; os resultados estão em `output/qa/contato_google.jpg` e `output/qa/verificacao_google.json`. A cena 20 dura cerca de 62 segundos devido ao conteúdo narrado. A narração não foi ouvida integralmente, e a sincronização dos trechos de legenda dentro das frases é aproximada; pode haver sobreposição da legenda externa com a faixa do glossário dependendo do reprodutor. As limitações didáticas e de animação da versão de trabalho continuam aplicáveis.

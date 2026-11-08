@@ -1,0 +1,22 @@
+[
+["LLM (modelo de linguagem) = bibliotecário que compõe a resposta", "Parâmetros = padrões aprendidos, não livros consultados"],
+["Usuário = diretor que define o pedido", "Contexto = mesa; fontes = acervo; ferramentas = auxiliares"],
+["Tokenização = dividir o bilhete em fichas", "Token = pedaço de texto; ID = número de catálogo"],
+["Embedding = coordenadas numéricas de uma ficha", "Vetor = seta; similaridade de cosseno = comparação de direções"],
+["Query (Q) = interesse da ficha atual", "Key (K) = etiqueta para comparação; Value (V) = conteúdo associado", "Atenção = pesos combinam valores; Q, K e V são vetores"],
+["Transformer = conjunto de andares de processamento", "Cabeças de atenção = diferentes olhares sobre as fichas", "FFN = processamento por posição; residual = caminho de informação"],
+["Logits = notas atribuídas às fichas candidatas", "Softmax = conversão das notas em probabilidades"],
+["Temperatura = ajuste da concentração das chances", "Top-K = limitar a K fichas; Top-P = limite por chance acumulada", "Amostragem = escolha de ficha; EOS = sinal de término"],
+["Treinamento = exercícios repetidos do bibliotecário", "Loss = medida de erro; backprop = cálculo dos ajustes", "Otimizador atualiza pesos; fine-tuning = treinamento adicional"],
+["Janela de contexto = espaço disponível na mesa", "KV Cache = reutilização temporária de chaves e valores calculados"],
+["Prompt = ficha com o pedido e as instruções", "Engenharia de prompt = organizar objetivo, contexto e critérios"],
+["RAG = buscar no acervo e trazer trechos à mesa", "Recuperação = busca externa; geração = resposta com contexto"],
+["Tool Calling = solicitar ajuda ao setor responsável", "Aplicação valida e executa; resultado volta ao modelo"],
+["MCP = padrão de comunicação entre balcões e a aplicação", "Cliente conecta; servidor oferece ferramentas e recursos"],
+["Skill = manual de procedimento reutilizável", "RAG fornece conteúdo; ferramentas executam operações"],
+["Agente = bibliotecário que planeja, age e verifica", "Objetivo = pedido do diretor; loop = ciclo de ação e revisão"],
+["Subagentes = colegas com tarefas delegadas", "Orquestração = coordenar paralelismo, dependências e revisão"],
+["Memória persistente = caderno guardado no armário", "Recuperação = trazer o registro à mesa; difere do KV Cache"],
+["Evals = provas com critérios; QA = revisão de qualidade", "Observabilidade = registro de eventos, tempo, custos e falhas"],
+["Prompt Injection = livro tenta passar uma ordem indevida", "Menor privilégio = conceder apenas chaves necessárias", "Aprovação humana = diretor autoriza; auditoria = registro verificável"]
+]
