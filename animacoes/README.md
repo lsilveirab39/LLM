@@ -51,3 +51,7 @@ python scripts/montar_piper_sincronizado.py
 ```
 
 O roteiro é `output/narracao/roteiros_google.json` (texto revisado; a síntese desta versão é local, sem Google). A temporização de cada cena é proporcional à fala completa; isso não é sincronização semântica de cada animação com cada frase. As legendas `output/legendas/pt-BR-piper-sinc.srt` têm tempos aproximados dentro de cada frase e podem se sobrepor ao glossário em alguns reprodutores.
+
+## Pronúncia de termos em inglês
+
+A versão `output/IA_Biblioteca_Piper_Pronuncia_Ingles.mp4` usa a mesma voz Piper pt-BR, com sequências fonéticas IPA em inglês americano para termos selecionados no áudio. A grafia original é preservada nas legendas e no glossário. O dicionário e os comandos de síntese estão em `scripts/gerar_piper_pronuncia.py`; execute-o com `--modelo work/vozes/pt_BR-faber-medium.onnx`, seguido de `python scripts/montar_piper_pronuncia.py`. A voz foi treinada para português brasileiro, portanto inserir fonemas não garante sotaque nativo ou pronúncia perfeita; escuta e ajuste por pessoas continuam necessários. As legendas são aproximadas dentro de cada frase.

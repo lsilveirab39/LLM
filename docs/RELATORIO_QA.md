@@ -66,3 +66,9 @@ A validação com ffprobe confirmou 20 cenas H.264, 1920×1080, 30 fps e áudio 
 ## Piper com cenas retimadas
 
 O filme `IA_Biblioteca_Piper_Sincronizado.mp4` foi montado com voz Piper pt-BR e as faixas do glossário. As 20 cenas foram verificadas com ffprobe: H.264, 1920×1080, 30 fps e AAC. A pausa calculada entre o término do último trecho sintetizado e o fim da cena ficou entre 1,086 e 1,100 segundo; o filme tem 637,926 segundos. As 186 legendas apresentam tempos válidos e ordenados. A imagem da primeira cena foi examinada como amostra. O roteiro usa a correção da cena 07 para Brasília. As animações foram aceleradas proporcionalmente à duração de cada cena; isso não garante correspondência exata entre cada fala e cada elemento visual. Não foi feita escuta integral ou revisão visual de todos os quadros.
+
+## Pronúncia inglesa com Piper
+
+O roteiro foi percorrido com um dicionário de 33 entradas IPA: 48 ocorrências de termos e siglas em inglês foram convertidas para fonemas na entrada do sintetizador, mantendo a escrita original nas legendas. Confirmou-se que todos os símbolos constam do mapa do modelo. A checagem não comprova a qualidade auditiva nem sotaque nativo; a voz Piper foi treinada em português e precisa de escuta humana, especialmente de embedding, query, key, value e siglas. Não houve escuta integral nesta execução.
+
+Os 20 MP4s têm H.264 1920×1080 a 30 fps e áudio AAC; pausas finais medidas entre 1,085 e 1,100 s. As 186 legendas têm tempos ordenados; sua temporização intra-frase é aproximada. O filme dura 636,490 s. A cena 05 foi disponibilizada como amostra para avaliação auditiva. As limitações de sincronização visual proporcional e de revisão integral anteriores permanecem.
