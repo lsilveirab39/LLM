@@ -1,0 +1,7 @@
+# Plano de produção
+
+A fonte é a apresentação original e suas notas, com a ordem e os 20 storyboards em `roteiros/`. A biblioteca e o personagem são uma representação didática, não uma descrição literal do modelo. O pipeline proposto usa cenas Python/Manim Community, renderização H.264 Full HD com FFmpeg, roteiros em português e legendas SRT; nenhum serviço pago é necessário. Manim MCP é opcional e não está disponível nesta sessão.
+
+Primeiro validar as fontes e produzir as provas de conceito 03 (texto → tokens e IDs ilustrativos) e 17 (tarefas paralelas, dependência da revisão e integração). Conferir legibilidade, precisão e continuidade visual antes de produzir as demais cenas em lotes de quatro. Para cada vídeo: ffprobe, extração de quadro central, revisão factual e visual independente; só então consolidar em ordem. Sincronizar legendas às durações medidas, não a durações presumidas. Preservar o PPTX original e verificar separadamente qualquer cópia com vídeo incorporado.
+
+Riscos: dependências gráficas nativas do Manim indisponíveis sem privilégios; tempo de CPU e espaço para 20 cenas Full HD; ausência de voz pt-BR local; sincronização e legibilidade; metáforas técnicas imprecisas; impossibilidade de validar apresentação no PowerPoint desktop. Registrar evidências e pendências, não marcar como concluído o que não tiver sido gerado ou revisado. Priorizar protótipos e código reproduzível se a renderização integral não for possível.
