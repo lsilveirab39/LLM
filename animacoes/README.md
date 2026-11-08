@@ -40,3 +40,14 @@ python scripts/montar_video_google.py
 ```
 
 `output/legendas/pt-BR-google.srt` é calculado por frase; dentro de cada frase os tempos são proporcionais ao texto e não são alinhamento fonético. O áudio e os vídeos de cenas intermediários são mantidos localmente e ignorados pelo Git. A sincronia fina das legendas e a pronúncia dos termos técnicos exigem revisão por escuta humana.
+
+## Piper com transições sincronizadas
+
+`output/IA_Biblioteca_Piper_Sincronizado.mp4` mantém a voz Piper e o glossário, com animações retimadas à duração de cada fala e cerca de 1,1 s de pausa ao final. Para gerar novamente, prepare o modelo Piper indicado acima e execute:
+
+```bash
+python scripts/gerar_piper_sincronizado.py --modelo work/vozes/pt_BR-faber-medium.onnx
+python scripts/montar_piper_sincronizado.py
+```
+
+O roteiro é `output/narracao/roteiros_google.json` (texto revisado; a síntese desta versão é local, sem Google). A temporização de cada cena é proporcional à fala completa; isso não é sincronização semântica de cada animação com cada frase. As legendas `output/legendas/pt-BR-piper-sinc.srt` têm tempos aproximados dentro de cada frase e podem se sobrepor ao glossário em alguns reprodutores.

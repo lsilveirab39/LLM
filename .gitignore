@@ -8,3 +8,6 @@ output/narracao_neural/
 output/scenes_narradas_neural/
 output/narracao_google/
 output/scenes_google/
+
+output/narracao_piper_sinc/
+output/scenes_piper_sinc/

@@ -1,0 +1,122 @@
+[
+  {
+    "cena": 1,
+    "duracao_s": 31.4,
+    "fala_s": 30.312,
+    "pausa_final_s": 1.088
+  },
+  {
+    "cena": 2,
+    "duracao_s": 33.09102,
+    "fala_s": 31.991,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 3,
+    "duracao_s": 31.350023,
+    "fala_s": 30.25,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 4,
+    "duracao_s": 32.0,
+    "fala_s": 30.9,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 5,
+    "duracao_s": 35.394014,
+    "fala_s": 34.294,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 6,
+    "duracao_s": 33.4,
+    "fala_s": 32.309,
+    "pausa_final_s": 1.091
+  },
+  {
+    "cena": 7,
+    "duracao_s": 32.626984,
+    "fala_s": 31.527,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 8,
+    "duracao_s": 31.366667,
+    "fala_s": 30.277,
+    "pausa_final_s": 1.09
+  },
+  {
+    "cena": 9,
+    "duracao_s": 30.92,
+    "fala_s": 29.82,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 10,
+    "duracao_s": 30.687982,
+    "fala_s": 29.588,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 11,
+    "duracao_s": 32.4,
+    "fala_s": 31.314,
+    "pausa_final_s": 1.086
+  },
+  {
+    "cena": 12,
+    "duracao_s": 31.433333,
+    "fala_s": 30.338,
+    "pausa_final_s": 1.095
+  },
+  {
+    "cena": 13,
+    "duracao_s": 27.8,
+    "fala_s": 26.704,
+    "pausa_final_s": 1.096
+  },
+  {
+    "cena": 14,
+    "duracao_s": 31.033333,
+    "fala_s": 29.944,
+    "pausa_final_s": 1.089
+  },
+  {
+    "cena": 15,
+    "duracao_s": 29.185986,
+    "fala_s": 28.086,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 16,
+    "duracao_s": 32.453016,
+    "fala_s": 31.353,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 17,
+    "duracao_s": 31.118005,
+    "fala_s": 30.018,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 18,
+    "duracao_s": 29.6,
+    "fala_s": 28.508,
+    "pausa_final_s": 1.092
+  },
+  {
+    "cena": 19,
+    "duracao_s": 33.664989,
+    "fala_s": 32.565,
+    "pausa_final_s": 1.1
+  },
+  {
+    "cena": 20,
+    "duracao_s": 36.954014,
+    "fala_s": 35.855,
+    "pausa_final_s": 1.099
+  }
+]
