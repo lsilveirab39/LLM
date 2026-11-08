@@ -18,3 +18,14 @@ O renderizador usa 1920×1080, 30 fps e gera H.264 no diretório `output/scenes/
 ## Narração local e montagem com áudio
 
 Após renderizar as 20 cenas, instale `espeak-ng` e execute `python scripts/gerar_narracao.py`. O script verifica as durações via ffprobe e produz WAVs e `output/legendas/pt-BR-alinhado.srt` com marcações dos trechos efetivamente sintetizados. Ouça e revise a voz e o sincronismo com a animação. Depois, `python scripts/inserir_narracao.py` gera cópias em `output/scenes_narradas/` e concatena essas cópias em `output/IA_Biblioteca_Filme_Completo.mp4`. Para um executável fora do PATH, informe `--espeak /caminho/para/espeak-ng`. O script de narração usa 50 s para cenas ausentes por padrão; não considere o resultado final até todas existirem e a narração ser gerada novamente.
+
+## Voz neural brasileira alternativa
+
+A versão `output/IA_Biblioteca_Filme_Voz_Natural.mp4` usa a voz neural local Piper `pt_BR-faber-medium`. Seu conjunto de dados é indicado como CC0 no [model card](https://huggingface.co/rhasspy/piper-voices/blob/main/pt/pt_BR/faber/medium/MODEL_CARD); o programa Piper é GPL-3.0-or-later. Não é necessária API paga. Para reproduzir, instale `piper-tts==1.8.0`, baixe o arquivo [ONNX](https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx) e o [JSON de configuração](https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx.json) no mesmo diretório. Depois execute:
+
+```bash
+python scripts/gerar_narracao_piper.py --modelo work/vozes/pt_BR-faber-medium.onnx
+python scripts/montar_video_piper.py
+```
+
+O primeiro comando gera WAVs e `output/legendas/pt-BR-neural.srt`; o segundo cria cópias narradas e o filme. A fala é sintetizada por frases, e a distribuição das legendas dentro de cada frase é aproximada. A voz continua sintética e deve ser avaliada por escuta humana; a sincronia com os movimentos também requer revisão. Os modelos e WAVs intermediários não são necessários para reproduzir o MP4 já gerado.

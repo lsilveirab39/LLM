@@ -2,3 +2,7 @@
 __pycache__/
 *.py[cod]
 media/
+
+work/
+output/narracao_neural/
+output/scenes_narradas_neural/

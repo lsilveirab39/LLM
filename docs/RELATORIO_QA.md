@@ -52,3 +52,7 @@ Os quadros centrais das 20 cenas foram examinados em `output/qa/contato.jpg`. Ta
 | 20 | Fronteira de confiança, acesso limitado, aprovação e auditoria aparecem progressivamente; revisar posicionamento do rótulo próximo ao cabeçalho e ampliar a demonstração visual. |
 
 Portanto os vídeos constituem uma **versão de trabalho**, não uma entrega aprovada contra todos os critérios: o requisito de movimento explicativo específico para cada cena e o QA integral ainda não foram satisfeitos. Não foi realizada revisão auditiva integral nem validação de acessibilidade em dispositivo móvel.
+
+## Alternativa de narração neural
+
+Foi criada uma segunda versão do filme usando Piper 1.8.0 e voz pt_BR-faber-medium, sem API paga. A voz é sintetizada por frases inteiras, com ritmo e pausas moderados. O `ffprobe` confirmou H.264 1920×1080 a 30 fps, áudio AAC e duração de 961,815 s. Os 20 áudios couberam nas cenas originais; as 186 legendas têm tempos válidos e ordenados. A marcação dentro de cada frase é proporcional, não alinhamento fonético; pronúncia, naturalidade, sincronismo com imagens e qualidade para ouvintes precisam de revisão auditiva humana. A versão anterior foi preservada.
